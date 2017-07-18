@@ -5,51 +5,17 @@ metadata-shared-styles.html
 metadata-format.html
 
 */
-<i18n>
-{
-  "en": {
-    "contacts": "Contacts",
-    "pointofcontact": "Point of contact",
-    "author" : "Author",
-    "custodian" : "Custodian",
-    "metadatapointofcontact":"Point of contact for metadata",
-    "distributor":"Distributor",
-    "originator":"Originator",
-    "owner": "Owner",
-    "principalinvestigator":"Principal investigator",
-    "processor": "Processor",
-    "publisher": "Publisher"
-    
-  },
-  "fr": {
-    "contacts": "Contacts",
-    "pointofcontact": "Point de contact",
-    "author" : "Auteur",
-    "custodian" : "Archiviste",
-    "metadatapointofcontact":"Point de contact pour les métadonnées",
-    "distributor":"Distributeur",
-    "originator":"Créateur",
-    "owner": "Propriétaire",
-    "principalinvestigator": "Investigateur principal",
-    "processor": "Elaborateur",
-    "publisher": "Publicateur"
-  }
-}
-</i18n>
 
 <template>
-<span class="aeris-authors-host" v-if="visible">
+<span class="aeris-tags-host" v-if="visible">
 <div class="component-container">
       <header>
-        <h3><i class="fa fa-users"></i>Authors</h3>
+        <h3><i class="fa fa-tags"></i>Tags</h3>
         <div class="aeris-icon-group"></div>
       </header>
       <main>
-      <span v-for="role in roles">
-        <h5 class="section-title">{{role}}</h5>
-        <span  v-for="author in authors">
-          <aeris-bibliography-author :author="JSON.stringify(author)" :lang="lang"></aeris-bibliography-author>
-        </span>
+      <span v-for="tag in tags">
+        <i class="fa fa-tag"></i><span class="tag-name">{{ tag.name }}</span>
        </span>     
       </main>
     </div>
@@ -101,24 +67,22 @@ export default {
   },
    data () {
     return {
-    	authors: null,
     	visible: true,
     	theme: null,
-    	roles: ['author'],
+    	tags: null,
     }
-    
   },
   methods: {
   
     handleRefresh: function(data) {
-  		console.log("Aeris Bibliography Authors - Refreshing"); 
-    	console.log("detail: " + JSON.stringify(data.detail));
+  		console.log("Aeris Bibliography Tags - Refreshing"); 
     	this.visible = false
     	if ((! data) || (! data.detail))  {
     	 return
     	}
  
-    	this.authors = data.detail[0].resource.author;
+    	this.tags = data.detail[0].tags;
+    	console.log(this.tags);
     	this.visible = true; 
    	
   	},
@@ -137,22 +101,22 @@ export default {
   		this.$el.querySelector("header").style.background=theme.primary
   		this.theme = theme;
   		this.ensureTheme();
-  	},
-  	
-  	getRolesToDisplay: function() {
-  		this.roles.push("author");
-  	}
+  	},  	
+
   }
 }
 </script>
 
 <style>
 
-.aeris-authors-host .section-title {
-  border-bottom: 1px solid
-}
-.aeris-authors-host author-contact {
+.aeris-tags-host .section-title {
+  border-bottom: 1px solid;
   margin-top: 5px
  }
+ 
+.tag-name {
+  margin-left: 2px;
+  margin-right: 8px;
+}
 
  </style>

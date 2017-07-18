@@ -30,14 +30,14 @@ metadata-format.html
 <span class="aeris-metadata-information-host" v-if="visible">
  <div class="component-container">
       <header>
-        <h3><i class="fa fa-pencil"></i>{{citation}}</h3>
+        <h3><i class="fa fa-quote-right"></i>{{citation}}</h3>
         <div class="aeris-icon-group"></div>
       </header>
-      <main>
-       <div class="btnwrapper">         
-         <input class="btn" v-for="cType in citationTypes" :value="cType" type="button" @click="changeCitation($event)">{{cType}}</input>
-       </div>
-       
+      <div class="mainborder">
+        <div class="btnwrapper">         
+	         <input class="btn" v-for="cType in citationTypes" :value="cType" type="button" @click="changeCitation($event)">{{cType}}</input>
+	    </div>
+ 	     
        <article v-if="citationType === 'APA'">
           <h5 v-if="value.id">{{citationType}}</h5>
           <span>{{authors.apa}}</span>
@@ -63,14 +63,15 @@ metadata-format.html
           <span>'{{value.title}}',</span>
           <span><i>{{value.journal}},</i></span>
           <span v-if="value.pages">{{value.pages}}</span>
-        </article>        
-      </main>
+        </article>
+        </section>
+      </div>
     </div>
 </span>
 </template>
 
 <script>
- import { EventBus } from '../aeris-event-bus/aeris-event-bus.js';
+import { EventBus } from '../aeris-event-bus/aeris-event-bus.js';
 export default {
   props: {
   	lang:  {
@@ -177,9 +178,20 @@ export default {
   }
 }
 </script>
+ 
+<style>
  .btnwrapper {
+   margin: 5px;
    display: flex;
    justify-content: space-around;
  }
-<style>
+ 
+ .mainborder {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-top: none;
+    word-wrap: break-word;
+ 
+ }
+ 
  </style>

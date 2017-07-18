@@ -2,8 +2,8 @@ var webpack = require("webpack");
 
 module.exports = {
    entry: './src/main.js',
-  output: {
-    path: 'C:\\home\\erica\\aeris-bibliography-vue\\dist',
+   output: {
+    path: '/home/edegraaf/git/aeris-bibliography-vue/dist',
     publicPath: 'dist/',
     filename: 'build.js'
   },

@@ -53,7 +53,13 @@ export default {
     },
     service() {
     	this.refresh();
+    },
+    collectionId () {
+       this.refresh();
     }
+    
+    
+    
   },
   
   mounted: function () {
@@ -65,11 +71,25 @@ export default {
   
   },
   
+  created: function () {
+  console.log("Aeris Bibliography Detail - Creating");
+  EventBus.$on('publicationId', this.changeId);
+   
+  },
+  
+  
   methods: {
   
+  changeId: function(publicationId) {
+ 
+     console.log("publication id is: " + publicationId);
+  	 this.collectionId = publicationId;
+  	 this.refresh();
+  },
+  
   refresh: function() {
-  	   if (this.service && this.identifier) {
-	   var url = this.service+'/hash/'+this.identifier;
+  	   if (this.service && this.collectionId) {
+	   var url = this.service+'/hash/'+this.collectionId;
    	   this.$http.get(url).then((response)=>{this.handleSuccess(response)},(response)=>{this.handleError(response)});
    	   }
    },
@@ -100,7 +120,8 @@ export default {
    data () {
     return {
     	content:'',
-    	displayableData:''
+    	displayableData:'',
+    	collectionId: null
     }
   }
 }

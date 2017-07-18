@@ -1,49 +1,92 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <title>Aeris Bibliography</title>
-	<link rel="stylesheet" href="src/style/aeris-metadata-shared-style.css">
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<head>
+<meta charset="utf-8">
+<title>Aeris Bibliography</title>
+<link rel="stylesheet" href="src/style/aeris-metadata-shared-style.css">
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/document-register-element/1.4.1/document-register-element.js"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment-with-locales.min.js"></script>
+
+</head>
+<body>
+
+	<aeris-bibliography-detail service="http://31.207.33.161:8080/aeris-bibliography/rest/publication"></aeris-bibliography-detail>
+
+    <div class="aeris-bibliography-search">
+	    <div class="search-container">
+		  <aeris-bibliography-search></aeris-bibliography-search>
+		</div>
+
+	   <div class="biblio-buttons">
+		  <aeris-bibliography-searchbutton></aeris-bibliography-searchbutton>
+       </div>
+		
+		<div class="detail-container">
+			<div class="item-container">
+				<aeris-bibliography-citation></aeris-bibliography-citation>
+				<aeris-bibliography-authors></aeris-bibliography-authors>
+			</div>
+			<div class="item-container">
+				<aeris-bibliography-abstract></aeris-bibliography-abstract>	
+				<aeris-bibliography-tags></aeris-bibliography-tags>
+			</div>
+		</div>
+		
+	    <div class="synopsis-container">
+		  <aeris-bibliography-list></aeris-bibliography-list>
+		</div>
+	</div>
 	
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/document-register-element/1.4.1/document-register-element.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment-with-locales.min.js"></script>
-    <style>
-    .large-column {
- 	  width: 80%;
- 	  overflow-y: scroll;
-      padding: 2em;
-      flex: 2;
-    }
-    
-    .detail-container {
-      width: 400px;
-    }
-    
-    .authors-container .citation-container {
-      display: flex;
-      flex-flow: row nowrap;
-      justify-content: space-around;
-    }
-    </style>  
-  </head>
-  <body>
-  
-    <aeris-bibliography-list service="http://31.207.33.161:8080/aeris-bibliography/rest/publication" tag="eccad"></aeris-bibliography-list>
-    
-    
-  	<aeris-bibliography-detail service="http://31.207.33.161:8080/aeris-bibliography/rest/publication" identifier="a928077feee36e54bb9bd211a9557ebf">
-  	</aeris-bibliography-detail>
-    <div class="detail-container">
-  	  <div class="citation-container">
-  	    <aeris-bibliography-citation></aeris-bibliography-citation>
-  	  </div>
-  	  <div class="authors-container">
-  	    <aeris-bibliography-authors></aeris-bibliography-authors>
-  	  </div>
-    </div>
-    <script src="dist/build.js"></script>
+     <div class="citation-container">
+  	    <aeris-aeris-disponibility-calendar-yearly service="http://31.207.33.161:8080/aeris-bibliography/rest/publication" start="1960"></aeris-aeris-disponibility-calendar-yearly>
+  	  </div-->
+
+	</div>
+	<script src="dist/build.js"></script>
+
+	<style>
+	
+.aeris-bibliography-search {
+   padding: 5px;
+   display: flex;
+   justify-content: center;
    
-  </body>
+}	
+
+.search-container {
+   width: 250px;
+}
+
+.detail-container {
+  width: 35%;
+  flex-wrap: nowrap; 
+}
+
+.item-container {
+  width: 50%;
+}
+.synopsis-container {
+  width: 305px;
+}
+
+.biblio-buttons {
+  width: 5%;
+}
+
+
+.authors-container .citation-container {
+	display: flex;
+	flex-flow: row nowrap;
+	justify-content: space-around;
+}
+</style>
+
+</body>
 </html>

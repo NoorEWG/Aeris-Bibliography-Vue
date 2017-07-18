@@ -6,11 +6,11 @@
 
 
 <template>
-<span class="aeris-metadata-contact-host" v-if="visible">
-<div class="metadata-contact-container">
+<span class="aeris-author-host" v-if="visible">
+<div class="aeris-author-container">
       <article>
         <div>
-          <p class="metadata-contact-name"><i class="fa fa-user"></i>{{value.lastName}} {{value.firstName}}</p>
+          <p class="aeris-author-name"><i class="fa fa-user"></i>{{value.lastName}} {{value.firstName}}</p>
         </div>
       </article>
     </div>
@@ -54,36 +54,36 @@ export default {
 </script>
 
 <style>
-	.aeris-metadata-contact-host {
+	.aeris-aeris-author-host {
         display: block;
         font-family: 'Open Sans', sans-serif;
         --paper-input-container-focus-color: #666;
         transition: 0.6s
     }
-    .metadata-contact-container article {
+    .aeris-author-container article {
         display: flex;
         flex-direction: column
     }
-    .metadata-contact-container article p {
+    .aeris-author-container article p {
         margin: 0 auto
     }
-    .metadata-contact-container .metadata-contact-name {
+    .aeris-author-container .aeris-author-name {
         margin: 0
     }
-    .metadata-contact-container .metadata-contact-name .fa {
+    .aeris-author-container .aeris-author-name .fa {
         display: inline-block;
         margin-right: 5px;
         width: 1em;
         text-align: center
     }
-    .metadata-contact-container .metadata-contact-description {
+    .aeris-author-container .aeris-author-description {
         margin-left: 0.5em;
         padding: 3px 0 0 10px;
         border-left: 1px solid #bbb;
         font-size: 0.8em;
         line-height: 1.5em
     }
-    .metadata-contact-container a {
+    .aeris-author-container a {
         color: #3498db;
         text-decoration: none
     }
